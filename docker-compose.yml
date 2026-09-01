@@ -1,0 +1,22 @@
+# Scaffold only - see note in Dockerfile. Brings up the API and dashboard
+# together for local/demo use. Set ANTHROPIC_API_KEY in a .env file (not
+# committed) to enable LLM-generated (rather than extractive) policy answers.
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+
+  dashboard:
+    build: .
+    command: streamlit run frontend/streamlit_app.py --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api

@@ -1,0 +1,13 @@
+{
+  "model_name": "Attrition Prediction Model",
+  "version": "v1",
+  "algorithm": "LogisticRegression",
+  "training_date": "2026-08-31",
+  "roc_auc": 0.797,
+  "f1_score": 0.462,
+  "recall_left": 0.638,
+  "precision_left": 0.361,
+  "training_rows": 1470,
+  "target_column": "Attrition",
+  "notes": "Class-imbalance handled via class_weight/scale_pos_weight; selected on recall for the minority 'Left' class."
+}

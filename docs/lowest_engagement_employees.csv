@@ -1,0 +1,11 @@
+EmployeeID,Name,Department,JobRole,WorkLifeBalanceIndex,PerformanceRating
+416,Dr. Pamela Wilcox,Finance,Auditor,0.0,4
+257,Samantha Hill,Finance,Accountant,1.6,1
+30,Matthew Gutierrez,Support,Support Engineer,1.8,4
+47,Amy Peterson PhD,Sales,Account Manager,1.8,4
+193,Alison Cunningham,Support,Support Engineer,2.8,5
+413,Courtney Miller,Finance,Auditor,4.7,2
+170,Rebecca Thomas,Sales,Account Manager,5.2,1
+246,Sarah Shelton,Finance,Accountant,5.2,3
+324,Sarah Ponce,IT,Tester,6.0,3
+73,Peggy Hawkins,IT,Developer,6.3,4

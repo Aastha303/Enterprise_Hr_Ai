@@ -1,0 +1,10 @@
+{
+  "Sales Representative": "Sales Executive",
+  "Sales Executive": "Manager",
+  "Laboratory Technician": "Research Scientist",
+  "Research Scientist": "Research Director",
+  "Human Resources": "Manager",
+  "Healthcare Representative": "Manager",
+  "Manufacturing Director": "Research Director",
+  "Manager": "Research Director"
+}

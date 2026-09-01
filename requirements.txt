@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+fastapi
+uvicorn[standard]
+pydantic
+streamlit
+requests
+pytest
+httpx
+joblib
+matplotlib
+anthropic

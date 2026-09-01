@@ -1,0 +1,197 @@
+{
+  "employee_attrition": {
+    "file": "employee_attrition.csv",
+    "rows": 1470,
+    "cols": 35,
+    "columns": [
+      "Age",
+      "Attrition",
+      "BusinessTravel",
+      "DailyRate",
+      "Department",
+      "DistanceFromHome",
+      "Education",
+      "EducationField",
+      "EmployeeCount",
+      "EmployeeNumber",
+      "EnvironmentSatisfaction",
+      "Gender",
+      "HourlyRate",
+      "JobInvolvement",
+      "JobLevel",
+      "JobRole",
+      "JobSatisfaction",
+      "MaritalStatus",
+      "MonthlyIncome",
+      "MonthlyRate",
+      "NumCompaniesWorked",
+      "Over18",
+      "OverTime",
+      "PercentSalaryHike",
+      "PerformanceRating",
+      "RelationshipSatisfaction",
+      "StandardHours",
+      "StockOptionLevel",
+      "TotalWorkingYears",
+      "TrainingTimesLastYear",
+      "WorkLifeBalance",
+      "YearsAtCompany",
+      "YearsInCurrentRole",
+      "YearsSinceLastPromotion",
+      "YearsWithCurrManager"
+    ],
+    "candidate_id_columns": [],
+    "duplicated_rows": 0,
+    "missing_pct_top10": {
+      "Age": 0.0,
+      "Attrition": 0.0,
+      "BusinessTravel": 0.0,
+      "DailyRate": 0.0,
+      "Department": 0.0,
+      "DistanceFromHome": 0.0,
+      "Education": 0.0,
+      "EducationField": 0.0,
+      "EmployeeCount": 0.0,
+      "EmployeeNumber": 0.0
+    },
+    "target_balance_pct": {
+      "No": 83.88,
+      "Yes": 16.12
+    }
+  },
+  "hr_performance_engagement": {
+    "file": "hr_performance_engagement.csv",
+    "rows": 500,
+    "cols": 24,
+    "columns": [
+      "EmployeeID",
+      "Name",
+      "Gender",
+      "Age",
+      "Department",
+      "JobRole",
+      "EducationLevel",
+      "JoiningDate",
+      "CountryCode",
+      "Country",
+      "PhoneNumber",
+      "MonthlySalary",
+      "OvertimeHoursPerMonth",
+      "LeavesTaken",
+      "LastLeaveDate",
+      "LeaveDayName",
+      "ProjectsHandled",
+      "TrainingHours",
+      "CustomerSatisfaction",
+      "LastPromotionYear",
+      "YearsAtCompany",
+      "WorkLifeBalanceScore",
+      "PerformanceRating",
+      "AttritionRisk"
+    ],
+    "candidate_id_columns": [
+      "EmployeeID",
+      "CountryCode"
+    ],
+    "duplicated_rows": 0,
+    "missing_pct_top10": {
+      "CustomerSatisfaction": 63.8,
+      "EmployeeID": 0.0,
+      "Gender": 0.0,
+      "Name": 0.0,
+      "Department": 0.0,
+      "JobRole": 0.0,
+      "EducationLevel": 0.0,
+      "Age": 0.0,
+      "JoiningDate": 0.0,
+      "CountryCode": 0.0
+    }
+  },
+  "occupation_data": {
+    "file": "occupation_data.csv",
+    "rows": 1016,
+    "cols": 3,
+    "columns": [
+      "O*NET-SOC Code",
+      "Title",
+      "Description"
+    ],
+    "candidate_id_columns": [
+      "O*NET-SOC Code"
+    ],
+    "duplicated_rows": 0,
+    "missing_pct_top10": {
+      "O*NET-SOC Code": 0.0,
+      "Title": 0.0,
+      "Description": 0.0
+    }
+  },
+  "essential_skills": {
+    "file": "essential_skills.csv",
+    "rows": 18200,
+    "cols": 15,
+    "columns": [
+      "O*NET-SOC Code",
+      "Title",
+      "Element ID",
+      "Element Name",
+      "Scale ID",
+      "Scale Name",
+      "Data Value",
+      "N",
+      "Standard Error",
+      "Lower CI Bound",
+      "Upper CI Bound",
+      "Recommend Suppress",
+      "Not Relevant",
+      "Date",
+      "Domain Source"
+    ],
+    "candidate_id_columns": [
+      "O*NET-SOC Code",
+      "Element ID",
+      "Scale ID"
+    ],
+    "duplicated_rows": 0,
+    "missing_pct_top10": {
+      "Not Relevant": 50.0,
+      "Title": 0.0,
+      "O*NET-SOC Code": 0.0,
+      "Element Name": 0.0,
+      "Scale ID": 0.0,
+      "Scale Name": 0.0,
+      "Element ID": 0.0,
+      "Data Value": 0.0,
+      "N": 0.0,
+      "Lower CI Bound": 0.0
+    }
+  },
+  "software_skills": {
+    "file": "software_skills.csv",
+    "rows": 31821,
+    "cols": 7,
+    "columns": [
+      "O*NET-SOC Code",
+      "Title",
+      "Workplace Example",
+      "Element ID",
+      "Element Name",
+      "Hot Technology",
+      "In Demand"
+    ],
+    "candidate_id_columns": [
+      "O*NET-SOC Code",
+      "Element ID"
+    ],
+    "duplicated_rows": 0,
+    "missing_pct_top10": {
+      "O*NET-SOC Code": 0.0,
+      "Title": 0.0,
+      "Workplace Example": 0.0,
+      "Element ID": 0.0,
+      "Element Name": 0.0,
+      "Hot Technology": 0.0,
+      "In Demand": 0.0
+    }
+  }
+}

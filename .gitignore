@@ -1,0 +1,93 @@
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+# Streamlit
+# =========================
+
+.streamlit/secrets.toml
+
+# =========================
+# Jupyter
+# =========================
+
+.ipynb_checkpoints/
+
+# =========================
+# IDE / Editor
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+# OS files
+# =========================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Python tooling
+# =========================
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Logs
+# =========================
+
+*.log
+
+# =========================
+# Temporary files
+# =========================
+
+*.tmp
+*.temp
+*.bak
+
+# =========================
+# ML / Generated files
+# =========================
+
+*.pkl
+*.pickle
+*.joblib
+
+# =========================
+# Local prediction outputs
+# =========================
+
+data/predictions/
+
+# =========================
+# Large local model/cache files
+# =========================
+
+.cache/
+huggingface/

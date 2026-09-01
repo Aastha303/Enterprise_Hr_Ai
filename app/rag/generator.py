@@ -79,7 +79,7 @@ def answer_policy_question(question: str) -> dict:
     # retrieved text itself rather than a synthesized answer.
     extractive = " ".join(c.text for c in chunks[:1])
     return {
-        "answer": f"(No LLM configured - showing the most relevant policy excerpt directly.)\n\n{extractive}",
+        "answer": extractive,
         "sources": sources,
         "mode": "extractive_fallback",
     }

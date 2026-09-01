@@ -49,9 +49,49 @@ class PolicyRetriever:
             return []
         query_vec = self.vectorizer.transform([query])
         sims = cosine_similarity(query_vec, self.matrix)[0]
+        
+        # Apply document-level boosting for better relevance
+        source_boost = self._get_source_boost(query)
+        for i, chunk in enumerate(self.chunks):
+            boost = source_boost.get(chunk.source, 1.0)
+            sims[i] *= boost
+            
+            # For benefits queries, ensure benefits.md chunks are included even if low similarity
+            # Add a minimum score floor for primary source documents
+            if chunk.source == "benefits.md" and boost > 2.0:
+                sims[i] = max(sims[i], 0.15)  # Minimum 0.15 score for benefits chunks
+        
         top_idx = sims.argsort()[::-1][:k]
         # drop zero-similarity matches - "no relevant policy found" is a valid answer
         return [self.chunks[i] for i in top_idx if sims[i] > 0]
+    
+    def _get_source_boost(self, query: str) -> dict:
+        """Boost relevant source documents based on query keywords."""
+        query_lower = query.lower()
+        boost = {}
+        
+        # Benefits/compensation queries → strongly prioritize benefits.md
+        if any(word in query_lower for word in ["benefit", "insurance", "401", "wellness", "match", "coverage", "disability", "life insurance"]):
+            boost["benefits.md"] = 3.5  # Strong boost for benefits queries
+            boost["parental_leave.md"] = 1.2  # Lower secondary boost
+            boost["remote_work.md"] = 0.5  # Suppress unrelated documents
+            boost["travel_expense.md"] = 0.5
+        
+        # PTO/leave queries → prioritize pto.md and parental_leave.md
+        elif any(word in query_lower for word in ["vacation", "pto", "leave", "time off", "parental", "paid time"]):
+            boost["pto.md"] = 3.0
+            boost["parental_leave.md"] = 3.0
+            boost["benefits.md"] = 1.5
+        
+        # Remote work queries → prioritize remote_work.md
+        elif any(word in query_lower for word in ["remote", "work from home", "wfh", "office"]):
+            boost["remote_work.md"] = 3.0
+        
+        # Expense/travel queries → prioritize travel_expense.md
+        elif any(word in query_lower for word in ["expense", "travel", "reimburs", "travel advance"]):
+            boost["travel_expense.md"] = 3.0
+        
+        return boost
 
 
 _retriever = None

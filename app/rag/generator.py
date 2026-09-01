@@ -54,7 +54,12 @@ def answer_policy_question(question: str) -> dict:
             "mode": "clarification_needed",
         }
 
-    chunks = retriever.retrieve(question, k=3)
+    # For benefits queries, retrieve more chunks to ensure comprehensive coverage
+    question_lower = question.lower()
+    if any(word in question_lower for word in ["benefit", "insurance", "401", "wellness", "match", "coverage", "disability"]):
+        chunks = retriever.retrieve(question, k=12)  # Get more for better benefits coverage
+    else:
+        chunks = retriever.retrieve(question, k=5)
 
     if not chunks:
         return {
@@ -64,6 +69,13 @@ def answer_policy_question(question: str) -> dict:
             "sources": [],
             "mode": "no_match",
         }
+
+    # For benefits queries, prioritize benefits.md chunks and filter out unrelated content
+    if any(word in question_lower for word in ["benefit", "insurance", "401", "wellness", "match", "coverage", "disability"]):
+        # Keep benefits-related chunks only
+        benefits_chunks = [c for c in chunks if c.source == "benefits.md"]
+        other_chunks = [c for c in chunks if c.source in ("parental_leave.md",)]  # Allow parental leave as it mentions benefits
+        chunks = benefits_chunks + other_chunks
 
     context = "\n---\n".join(f"[{c.source}] {c.text}" for c in chunks)
     sources = sorted(set(c.source for c in chunks))
@@ -77,7 +89,7 @@ def answer_policy_question(question: str) -> dict:
 
     # Extractive fallback: no API key configured (or the call failed) - return the
     # retrieved text itself rather than a synthesized answer.
-    extractive = " ".join(c.text for c in chunks[:1])
+    extractive = " ".join(c.text for c in chunks)
     return {
         "answer": extractive,
         "sources": sources,

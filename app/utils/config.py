@@ -12,6 +12,7 @@ METADATA_PATH = os.path.join(MODELS_DIR, ACTIVE_MODEL_VERSION, "metadata.json")
 
 EMPLOYEE_INTELLIGENCE_PATH = os.path.join(DATA_PROCESSED, "employee_intelligence.csv")
 ENGAGEMENT_PATH = os.path.join(DATA_PROCESSED, "engagement_processed.csv")
+SKILL_GAP_PATH = os.path.join(DATA_PROCESSED, "employee_skill_gaps.csv")
 ORG_SKILL_GAP_PATH = os.path.join(BASE_DIR, "..", "docs", "organization_skill_gap.csv")
 ATTRITION_PROCESSED_PATH = os.path.join(DATA_PROCESSED, "employee_attrition_processed.csv")
 EMPLOYEE_NAMES_PATH = os.path.join(DATA_PROCESSED, "employee_names_SYNTHETIC.csv")

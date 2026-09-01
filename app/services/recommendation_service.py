@@ -1,6 +1,6 @@
 """Serves per-employee upskilling recommendations."""
 import pandas as pd
-from app.utils.config import EMPLOYEE_INTELLIGENCE_PATH, ATTRITION_PROCESSED_PATH
+from app.utils.config import EMPLOYEE_INTELLIGENCE_PATH, ATTRITION_PROCESSED_PATH, SKILL_GAP_PATH, ORG_SKILL_GAP_PATH
 
 
 def get_all_recommendations() -> list:
@@ -49,3 +49,35 @@ def get_full_employee_record(employee_number: int) -> dict | None:
     if row.empty:
         return None
     return row.iloc[0].where(pd.notnull(row.iloc[0]), None).to_dict()
+
+
+def get_recommendation_quality_metrics() -> dict:
+    """
+    Get recommendation quality metrics (Precision@k, Recall@k, MRR@k).
+    
+    Returns:
+        Dictionary with:
+        - summary: Aggregate metrics across all employees
+        - evaluation_details: Path to detailed CSV report
+    """
+    try:
+        from app.services.recommendation_evaluation_service import get_recommendation_quality_report
+        
+        gap_df = pd.read_csv(SKILL_GAP_PATH)
+        org_gap_df = pd.read_csv(ORG_SKILL_GAP_PATH)
+        
+        report = get_recommendation_quality_report(gap_df, org_gap_df)
+        
+        return {
+            "status": "success",
+            "summary_statistics": report["summary_statistics"],
+            "total_employees_evaluated": report["total_employees_evaluated"],
+            "mean_skills_per_employee": report["mean_skills_per_employee"],
+            "evaluation_details_file": "docs/recommendation_evaluation.csv"
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e),
+            "note": "Evaluation metrics require skill gap data. Run notebook 20_recommendation_evaluation.py first."
+        }

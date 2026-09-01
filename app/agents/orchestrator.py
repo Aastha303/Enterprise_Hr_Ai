@@ -19,17 +19,20 @@ from app.agents import hr_tools  # noqa: F401 - import registers the tools
 from app.agents.tools import call_tool, PermissionDenied
 
 INTENT_RULES = [
-    # Policy-related keywords including word variations (e.g., "remotely", "working")
+    # Policy-related keywords - HIGHEST PRIORITY to avoid mixing with employee risk data
+    # Explicit checks: if asking about company policies, benefits, procedures - route to policy_agent
+    # NOT workforce_agent (which combines risk scores with the answer)
     (re.compile(r"\b(policy|leave|pto|benefit|remote|work from|expense|travel|parental|vacation|"
                 r"sick day|holiday|time off|maternity|paternity|sabbatical|insurance|healthcare|"
-                r"retirement|pension|401|rsu|stock|grant|bonus|overtime|flexible|hybrid|office)\b|"
-                r"\b(remote|work)\w+", re.I), "policy_agent"),
+                r"retirement|pension|401|rsu|stock|grant|bonus|overtime|flexible|hybrid|office|"
+                r"company offer|what does|how do|do we|can i|can employees)\b", re.I), "policy_agent"),
     # upskilling checked before the generic workforce/risk rule, since phrases like
     # "what skills is this employee missing" mention neither "skill gap" nor
     # "missing skill" in that exact order - match "skill(s)" and "missing/gap" independently.
     (re.compile(r"\bskills?\b.*\b(missing|gap)\b|\b(missing|gap)\b.*\bskills?\b"
                 r"|\b(skill gap|upskill|course|recommend|learn|training|certification)\b", re.I), "upskilling_agent"),
-    (re.compile(r"\b(risk|attrition|leaving|quit|resign|turnover|churn|retention)\b", re.I), "workforce_agent"),
+    # Workforce/risk queries - LOWER priority than policy so "benefits" doesn't trigger this
+    (re.compile(r"\b(risk|attrition|leaving|quit|resign|turnover|churn|retention|will (they|this employee|person) leave)\b", re.I), "workforce_agent"),
     (re.compile(r"\b(career|next role|promotion|path|readiness|development|progression)\b", re.I), "career_agent"),
     (re.compile(r"\b(salary|salaries|compensation|pay of every|income|wage|payroll)\b", re.I), "recruitment_agent"),
 ]
@@ -47,6 +50,8 @@ def route(message: str, employee_id: int | None, caller_role: str = "employee") 
 
     try:
         if agent == "policy_agent":
+            # Policy queries return ONLY the policy answer - no employee risk data
+            # This ensures benefits queries don't expose attrition_probability or risk level
             result = call_tool("ask_policy", caller_role, question=message)
         elif agent == "workforce_agent":
             if employee_id is None:

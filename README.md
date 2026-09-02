@@ -45,7 +45,7 @@ enterprise_hr_ai/
 │   └── predictions/               # Prediction logs
 │
 ├── notebooks/
-│   └── 01 → 18                   # Data + ML pipeline scripts
+│                                 # Data + ML pipeline scripts
 │
 ├── models/
 │   └── v1/                       # Versioned ML model and metadata
@@ -80,7 +80,7 @@ The pipeline processes the source HR data, creates the required features, trains
 The notebooks are numbered so they can be executed in sequence:
 
 ```text
-01 → 02 → 03 → ... → 18
+01 → 02 → .....
 ```
 
 Each step generates or updates files inside `data/processed/`, `docs/`, or `models/`.

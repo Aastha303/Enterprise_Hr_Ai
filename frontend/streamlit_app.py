@@ -16,7 +16,7 @@ st.set_page_config(page_title="Enterprise HR AI - Workforce Intelligence Platfor
 
 import os
 
-API_BASE = os.getenv("API_BASE", "http://127.0.0.1:8000")
+API_BASE = os.getenv("API_BASE", "https://enterprise-hr-ai-b8qx.onrender.com")
 
 # ---------------------------------------------------------------------------
 # Small styling pass so charts/cards feel like a single cohesive dark dashboard

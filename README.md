@@ -1,5 +1,111 @@
 # Enterprise HR AI — Workforce Intelligence & Upskilling Platform
 
+An industry-oriented **Enterprise HR AI Platform** designed to support modern HR decision-making through **Machine Learning, Workforce Intelligence, Skill Analytics, Career Readiness, Policy Intelligence, and an AI-powered HR Assistant**.
+
+The platform combines **predictive analytics + explainable AI + workforce intelligence + HR automation** into a unified HR decision-support system.
+
+---
+
+## 🚀 Live Deployment
+
+### 🌐 Streamlit Dashboard
+
+👉 **Live Application:**  
+https://enterprisehrai-lqkumckjcgy889ekupy9bj.streamlit.app/
+
+### ⚙️ FastAPI Backend
+
+👉 **Backend API:**  
+https://enterprise-hr-ai-b8qx.onrender.com
+
+👉 **API Documentation (Swagger):**  
+https://enterprise-hr-ai-b8qx.onrender.com/docs
+
+👉 **Health Check:**  
+https://enterprise-hr-ai-b8qx.onrender.com/health
+
+The backend is deployed using **Render**, while the interactive HR dashboard is deployed using **Streamlit Community Cloud**.
+
+---
+
+# 📌 Project Overview
+
+The **Enterprise HR AI Platform** is an intelligent HR decision-support system that helps organizations understand workforce behavior, predict employee attrition, identify skill gaps, evaluate career readiness, analyze workforce capacity, and interact with HR policies using AI.
+
+The system integrates:
+
+- Machine Learning
+- Explainable AI
+- Workforce Analytics
+- Skill Intelligence
+- Career Intelligence
+- Policy Q&A
+- AI HR Assistant
+- What-If Workforce Simulation
+- Financial Exposure Analysis
+- Employee-Level Drilldowns
+
+The goal is to move HR from **reactive reporting → predictive → intelligent decision-making**.
+
+---
+
+# 🎯 Key Objectives
+
+- Predict employees at risk of attrition
+- Identify critical organizational skill gaps
+- Analyze workforce capacity and utilization
+- Identify employees requiring upskilling
+- Evaluate career readiness
+- Estimate financial exposure caused by attrition
+- Provide explainable ML predictions
+- Enable HR policy question answering
+- Provide an AI-powered HR assistant
+- Support workforce what-if simulations
+- Provide employee-level intelligence
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                     ┌──────────────────────┐
+                     │      HR Data         │
+                     │ CSV / Excel / Data   │
+                     └──────────┬───────────┘
+                                │
+                                ▼
+                     ┌──────────────────────┐
+                     │   Data Processing    │
+                     │ Cleaning / Features  │
+                     └──────────┬───────────┘
+                                │
+             ┌──────────────────┼──────────────────┐
+             │                  │                  │
+             ▼                  ▼                  ▼
+      ┌────────────┐     ┌────────────┐     ┌────────────┐
+      │ Attrition  │     │ Workforce  │     │ Skill      │
+      │ Prediction │     │ Intelligence│    │ Analytics  │
+      └──────┬─────┘     └──────┬─────┘     └──────┬─────┘
+             │                  │                  │
+             └──────────────────┼──────────────────┘
+                                │
+                                ▼
+                    ┌────────────────────────┐
+                    │ Enterprise HR AI Layer │
+                    │                        │
+                    │ Career Readiness       │
+                    │ Upskilling             │
+                    │ Policy Q&A              │
+                    │ HR Assistant            │
+                    │ What-If Simulation      │
+                    │ Financial Exposure      │
+                    └────────────┬───────────┘
+                                 │
+                                 ▼
+                    ┌────────────────────────┐
+                    │ Streamlit HR Dashboard │
+                    └────────────────────────┘
+
 An AI-powered HR platform built to help HR teams answer three practical questions:
 
 1. **Which employees are at risk of leaving?**
